@@ -24,8 +24,13 @@ Vagrant qui se trouve ici:
 
 https://www.vagrantup.com/downloads.html
 
+<br>Après il suffit juste de copier le fichier *Vagrantfile* dans un dossier vide sur sa machine perso
 
-Après il suffit juste de copier le fichier *Vagrantfile* dans un dossier vide sur sa machine perso
+On peut aussi si on a GIT d'installé sur sa machine faire un:
+
+```
+git clone https://github.com/zuzu59/zvagrant.git
+```
 
 
 # Utilisation
@@ -58,6 +63,11 @@ C'est à dire que si l'on veut utiliser le browser avec un serveur WEB qui tourn
 
 http://adrs_ip_perso:30080
 
+Où si on veut accéder à sa machine virtuelle depuis l'extérieur:
+
+```
+ssh vagrant@adrs_ip_perso -p 30022
+```
 
 # Partage du dossier Vagrant sur la machine virtuelle
 
