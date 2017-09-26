@@ -7,6 +7,7 @@ La première installation prend 3 minutes environ et nécéssite une connexion �
 
 On utilise une version beaucoup plus *légère* d'Ubuntu, une **xUbuntu** !
 
+
 # Installation
 
 Il faut installer sur sa machine perso:
@@ -26,6 +27,7 @@ https://www.vagrantup.com/downloads.html
 
 Après il suffit juste de copier le fichier *Vagrantfile* dans un dossier vide sur sa machine perso
 
+
 # Utilisation
 
 Pour créer ou allumer: vagrant up<br>
@@ -38,6 +40,7 @@ pour connaitre l'état: vagrant status
 Avec comme:<br>
 Login: **vagrant**<br>
 Password: **vagrant**
+
 
 # Redirection de ports
 
@@ -54,6 +57,14 @@ guest: 3306,	host: 	"30306"<br>
 C'est à dire que si l'on veut utiliser le browser avec un serveur WEB qui tourne sur la machine virtuelle, il faut faire depuis sa machine personnelle:
 
 http://adrs_ip_perso:30080
+
+
+# Partage du dossier Vagrant sur la machine virtuelle
+
+Le dossier où se trouve le *Vagranfile* de la machine personnelle est partagé sur la machine virtuelle dans le dossier */vagrant* !
+
+Attention, ce n'est valable uniquement si on a démarré ou réveillé la machine virtuelle avec la commande *vagrant* !
+
 
 # Références
 
