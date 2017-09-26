@@ -1,5 +1,5 @@
 # Le Vagrantfile minimaliste pour avoir une machine virtualbox xUbuntu en mode graphique
-# zf170926.1418
+# zf170926.1713
 # Source: https://app.vagrantup.com/viruzzo/boxes/xubuntu-xenial64
 
 
@@ -7,7 +7,7 @@ $prov1 = <<SCRIPT
 		echo I am provisioning...
 		echo ---------------------change timezone...
 		sh -c 'echo Europe/Zurich >/etc/timezone && dpkg-reconfigure -f noninteractive tzdata'
-		
+
 		echo ---------------------change keyboard...
 		sed -i.bak 's/^XKBMODEL=.*/XKBMODEL="macintosh"/' /etc/default/keyboard
 		sed -i.bak 's/^XKBLAYOUT=.*/XKBLAYOUT="ch"/' /etc/default/keyboard
@@ -45,5 +45,3 @@ Vagrant.configure("2") do |config|
 
 
 end
-
-
