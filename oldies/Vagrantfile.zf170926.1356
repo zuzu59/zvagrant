@@ -1,0 +1,83 @@
+# Le Vagrantfile minimaliste pour avoir une machine virtualbox xUbuntu en mode graphique
+# zf170926.1155
+# Source: https://app.vagrantup.com/viruzzo/boxes/xubuntu-xenial64
+
+
+$prov1 = <<SCRIPT
+		echo I am provisioning...
+		echo ---------------------change timezone...
+		sh -c 'echo Europe/Zurich >/etc/timezone && dpkg-reconfigure -f noninteractive tzdata'
+		echo ---------------------add ubuntu dans le group vagrant...
+		addgroup ubuntu vagrant
+		
+		echo ---------------------change keyboard...
+		sed -i.bak 's/^XKBMODEL=.*/XKBMODEL="macintosh"/' /etc/default/keyboard
+		sed -i.bak 's/^XKBLAYOUT=.*/XKBLAYOUT="ch"/' /etc/default/keyboard
+		sed -i.bak 's/^XKBVARIANT=.*/XKBVARIANT="fr"/' /etc/default/keyboard
+		sed -i.bak 's/^XKBOPTIONS=.*/XKBOPTIONS="lv3:alt_switch"/' /etc/default/keyboard
+		setupcon --force
+		echo ---------------------change password Vagrant et Ubuntu user
+		usermod --password '$6$rT3MgCSe$yNURL1FYaaJgDKR5S7FIMoUiRC.Krooi54bHNHdpYZwWNtWy/9wrGOF8M3NIZQMNH5/IU0zyzQEq2M4KbocZm.' vagrant
+		usermod --password '$6$r4hbGMiV$JvEwB/BnabQsSooWEr89OfSXP.Jv8wHpF5mykiKYLxWQLhzuGp7JmqgWfpGKSIm5pS1dhrdadoNWpS5YvZ5l/0' ubuntu
+#		echo ---------------------copie des certificats SSH
+#		chmod +x /vagrant/ssh-copy.sh
+#		/vagrant/ssh-copy.sh
+#		echo ---------------------install le swap file
+#		chmod +x /vagrant/vagrant-swapfile.sh
+#		/vagrant/vagrant-swapfile.sh
+#		echo ---------------------change de sources pour apt-get
+#		# attention, il faut anti-slasher 2x !
+#		sed -i -e "s/http:\\/\\/archive.ubuntu.com/http:\\/\\/mirror.switch.ch\\/ftp\\/mirror\\/ubuntu/g" /etc/apt/sources.list
+#		sed -i -e "s/http:\\/\\/archive.ubuntu.com/http:\\/\\/ubuntu.ethz.ch/g" /etc/apt/sources.list
+#		echo ---------------------update and upgrade
+#		apt-get -y update
+#		# apt-get -y upgrade
+#		echo ---------------------remove chef and puppet...
+#		dpkg -P chef chef-zero puppet puppet-common
+#		echo ---------------------install xfce4 minimum
+#		apt-get -y install xfce4 xdm
+		
+#		#corrige le problème du TAB quand on est avec x2go
+#		sudo sed -i -e "s/&lt;Super&gt;Tab//g" /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
+#		echo ---------------------patch miscfiles
+#		sudo apt-get -y remove miscfiles
+#		sudo apt-get -y autoremove
+#		echo ---------------------setting MarkDown to PDF
+#		echo "sudo apt-get install pandoc texlive-latex3" > /home/ubuntu/zmd2pdf.sh
+#		chmod +x /home/ubuntu/zmd2pdf.sh
+#		echo ---------------------install x2go remote terminal
+#		apt-get -y install software-properties-common
+#		add-apt-repository ppa:x2go/stable -y
+#		apt-get update
+#		apt-get -y install x2goserver x2goserver-xsession
+#		echo ---------------------install and configure zDynDNS...
+#		chmod +x /vagrant/install_zdyndns.sh
+#		/vagrant/install_zdyndns.sh
+#		echo ---------------------clean...
+#		apt-get -y autoremove
+#		apt-get -y clean
+#		apt-get -y autoclean
+		echo ---------------------finished...
+#		echo ---------------------reboot...
+#		echo ---------------------ATTENTION, IL FAUT FAIRE UN VAGRANT RELOAD DE LA MACHINE POUR LA REDEMARRER !
+#		echo -
+# 		echo ---------------------Et après il faudra faire DEPUIS la machine: /vagrant/install_desktop_utils.sh pour terminer la config
+SCRIPT
+
+
+
+
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "viruzzo/xubuntu-xenial64"
+
+  config.vm.provider "virtualbox" do |vb|
+	 vb.gui = true
+	 vb.memory = 1000
+  end
+  config.vm.provision "shell", inline: $prov1
+
+
+end
+
+
