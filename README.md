@@ -1,5 +1,5 @@
 # zvagrant
-Petite installation perso d'un Vagrant simplifié pour se faire une machine virtuelle Linux en mode Desktop
+Petite installation perso d'un Vagrant simplifié pour se faire quatre (ou plus) machines virtuelles Linux en mode Desktop
 
 Très pratique quand on veut vite avoir une machine Linux avec un interface graphique sur sa machine personnelle. Aussi pratique pour s'en refaire une autre en vitesse toute propre pour des tests de script d'installation.
 
@@ -35,7 +35,7 @@ git clone https://github.com/zuzu59/zvagrant.git
 
 # Utilisation
 
-Pour créer ou allumer: vagrant up<br>
+Pour créer ou allumer: vagrant up zf-DSK64-30221, ou vagrant up zf-DSK64-30221 zf-SRV64-32221, ou vagrant up, démarre toutes les machines !<br>
 Pour se connecter en ssh: vagrant ssh<br>
 Pour suspendre: vagrant suspend<br>
 pour réveiller: vagrant resume<br>
@@ -49,24 +49,25 @@ Password: **vagrant**
 
 # Redirection de ports
 
-Les ports de la machine virtuelle sont redirigés sur la machine de la manière suivante:
+Les ports de la machine virtuelle sont redirigés sur la machine personnelle de la manière suivante:
 
-guest: 22,	host: 	"30022"<br>
-guest: 80,	host: 	"30080"<br>
-guest: 8080,	host: 	"30088"<br>
-guest: 443,	host: 	"30443"<br>
-guest: 5900, 	host: 	"30590"<br>
-guest: 3000,	host: 	"30300"<br>
-guest: 3306,	host: 	"30306"<br>
+    zf-DSK64-30221: 22 (guest) 	 => 30221<br>
+    zf-DSK64-30221: 80 	(guest)  => 30801<br>
+    zf-DSK64-30221: 8080 (guest) => 30881<br>
+    zf-DSK64-30221: 443 (guest)  => 30441<br>
+    zf-DSK64-30221: 5900 (guest) => 30591<br>
+    zf-DSK64-30221: 3000 (guest) => 30301<br>
+    zf-DSK64-30221: 3306 (guest) => 30331<br>
+
 
 C'est à dire que si l'on veut utiliser le browser avec un serveur WEB qui tourne sur la machine virtuelle, il faut faire depuis sa machine personnelle:
 
-http://adrs_ip_perso:30080
+http://adrs_ip_perso:30801
 
 Où si on veut accéder à sa machine virtuelle depuis l'extérieur:
 
 ```
-ssh vagrant@adrs_ip_perso -p 30022
+ssh vagrant@adrs_ip_perso -p 30221
 ```
 
 # Partage du dossier Vagrant sur la machine virtuelle
