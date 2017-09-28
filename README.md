@@ -1,9 +1,10 @@
 # zvagrant
 Petite installation perso d'un Vagrant simplifié pour se faire quatre (ou plus) machines virtuelles Linux en mode Desktop
 
-Très pratique quand on veut vite avoir une machine Linux avec un interface graphique sur sa machine personnelle. Aussi pratique pour s'en refaire une autre en vitesse toute propre pour des tests de script d'installation.
+Très pratique quand on veut vite avoir une machine Linux avec un interface graphique sur sa machine personnelle.<br>
+Aussi pratique pour se faire des machines jetables pour des tests très rapidement, simplement un *vagrant up machinename* pour créer la machine et un *vagrant destroy machinename* pour la détruire. Pas possible de faire plus simple.
 
-La première installation prend 3 minutes environ et nécéssite une connexion à Internet (descente de la vagrant box), mais les suivantes en moins d'une minute cela tourne.
+La première installation prend 3 minutes environ et nécéssite une connexion à Internet (descente de la vagrant box), mais les suivantes en moins d'une minute c'est prêt à tourner.
 
 On utilise une version beaucoup plus *légère* d'Ubuntu, une **xUbuntu** !
 
