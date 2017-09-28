@@ -63,7 +63,9 @@ Les ports de la machine virtuelle sont redirigés sur la machine personnelle de 
 
 C'est à dire que si l'on veut utiliser le browser avec un serveur WEB qui tourne sur la machine virtuelle, il faut faire depuis sa machine personnelle:
 
+```
 http://adrs_ip_perso:30801
+```
 
 Où si on veut accéder à sa machine virtuelle depuis l'extérieur:
 
