@@ -1,5 +1,5 @@
 # Le Vagrantfile minimaliste pour avoir quatre machines virtualbox xUbuntu en mode graphique
-# zf170927.1501
+# zf171016.1826
 # Source: https://app.vagrantup.com/viruzzo/boxes/xubuntu-xenial64
 
 
@@ -42,7 +42,7 @@ $prov1 = <<SCRIPT
 
 		echo ---------------------finished...
 		echo -
-		echo ---------------------ATTENTION IMPORTANT, IL FAUT FAIRE UN 'vagrant reload' DE LA MACHINE POUR TERMINER L'INSTALLATION !
+		echo ---------------------ATTENTION IMPORTANT, IL FAUT FAIRE UN 'vagrant reload' DE LA MACHINE POUR TERMINER L"'"INSTALLATION !
 		echo -
 SCRIPT
 
